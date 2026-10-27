@@ -1,0 +1,56 @@
+services:
+
+# ==============================================================================
+# SERVICIO DE BASE DE DATOS (PostgreSQL)
+# ==============================================================================
+
+  db:
+    image: postgres:15-alpine
+    container_name: finanzas_esp_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: finanzas
+      POSTGRES_PASSWORD: finanzas_secret_2026
+      POSTGRES_DB: finanzasdb
+    ports:
+      - "5440:5432"   # 5440 para no chocar con otros proyectos del curso (5432/5435)
+    volumes:
+      - finanzas_esp_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finanzas -d finanzasdb"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - finanzas_esp_network
+
+# ==============================================================================
+# SERVICIO MINIO (Chainguard) - Tickets de compra y avatares
+# ==============================================================================
+
+  minio:
+    image: chainguard/minio:latest
+    container_name: finanzas_esp_minio
+    user: "65532:65532" # Critico: fuerza el usuario 'nonroot' para evitar "access denied" en Windows
+    ports:
+      - "9030:9000"   # API S3 (comunicacion con FastAPI)
+      - "9031:9001"   # Consola Web de administracion
+    environment:
+      MINIO_ROOT_USER: finanzas_admin
+      MINIO_ROOT_PASSWORD: finanzas_minio_2026
+    volumes:
+      - ./minio_data:/data # Bind mount local (evita conflictos de permisos en Windows)
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    networks:
+      - finanzas_esp_network
+
+volumes:
+  finanzas_esp_postgres_data:
+    driver: local
+
+# Nota: 'minio_data' NO se declara aqui porque es un bind mount local (./minio_data)
+
+networks:
+  finanzas_esp_network:
+    driver: bridge

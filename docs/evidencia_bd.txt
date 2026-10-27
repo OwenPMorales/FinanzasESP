@@ -1,0 +1,28 @@
+  username   |                       hashed_password                        | role 
+-------------+--------------------------------------------------------------+------
+ demo_559911 | $argon2id$v=19$m=19456,t=2,p=1$Z2wNoTTGmHOOce59z/mfsw$i2z2fU | user
+ demo_2b6489 | $argon2id$v=19$m=19456,t=2,p=1$iRGC0LoXohTCOCdEaI0xBg$nEb/2H | user
+(2 rows)
+
+     jti      | revocado |          expires_at           
+--------------+----------+-------------------------------
+ 99264497b6bc | t        | 2026-11-03 03:37:11.617676+00
+ 11c83268dca8 | t        | 2026-11-03 03:37:13.771839+00
+ 3bba2ec54e1c | t        | 2026-11-03 03:37:37.48103+00
+ b5e56d4bf789 | t        | 2026-11-03 03:37:39.347887+00
+(4 rows)
+
+     name      |  key_prefix  |       key_hash       | is_active 
+---------------+--------------+----------------------+-----------
+ ESP32-S3 demo | fesp_kld6ekV | f1f06f40818926017b6f | t
+ ESP32-S3 demo | fesp_KXhJjYB | 47e94f8001f33134c81b | t
+(2 rows)
+
+ source |  status   | image_size |                             left                             
+--------+-----------+------------+--------------------------------------------------------------
+ web    | pendiente |      29496 | users/9342f8b7-3eda-4b8c-938b-1e22b4c91022/tickets/2026/10/5
+ esp32  | pendiente |       6346 | users/9342f8b7-3eda-4b8c-938b-1e22b4c91022/tickets/2026/10/9
+ web    | pendiente |      29496 | users/497a4660-1a2f-442f-8097-eae5e06d23fd/tickets/2026/10/a
+ esp32  | pendiente |       6346 | users/497a4660-1a2f-442f-8097-eae5e06d23fd/tickets/2026/10/7
+(4 rows)
+

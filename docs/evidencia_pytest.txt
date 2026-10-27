@@ -1,0 +1,23 @@
+tests/test_auth.py::test_hash_argon2id_con_sal_aleatoria PASSED
+tests/test_auth.py::test_rehash_cuando_cambian_parametros PASSED
+tests/test_auth.py::test_registro_no_expone_hash PASSED
+tests/test_auth.py::test_registro_duplicado_y_politica_password PASSED
+tests/test_auth.py::test_login_con_usuario_o_correo PASSED
+tests/test_auth.py::test_claims_del_access_token PASSED
+tests/test_auth.py::test_ruta_protegida_requiere_token PASSED
+tests/test_auth.py::test_refresh_no_sirve_como_access PASSED
+tests/test_auth.py::test_rotacion_y_deteccion_de_reuso PASSED
+tests/test_auth.py::test_logout_revoca_refresh PASSED
+tests/test_auth.py::test_cambio_password_cierra_sesiones PASSED
+tests/test_auth.py::test_listado_solo_admin PASSED
+tests/test_storage_y_tickets.py::test_avatar_sube_a_minio_y_da_url_prefirmada PASSED
+tests/test_storage_y_tickets.py::test_avatar_valida_contenido_real PASSED
+tests/test_storage_y_tickets.py::test_subir_ticket_multipart PASSED
+tests/test_storage_y_tickets.py::test_ticket_pdf_y_limite_de_tamano PASSED
+tests/test_storage_y_tickets.py::test_ticket_duplicado PASSED
+tests/test_storage_y_tickets.py::test_detalle_listado_descarga_y_borrado PASSED
+tests/test_storage_y_tickets.py::test_aislamiento_entre_usuarios PASSED
+tests/test_storage_y_tickets.py::test_flujo_esp32_llave_token_y_base64 PASSED
+tests/test_storage_y_tickets.py::test_base64_invalido PASSED
+tests/test_storage_y_tickets.py::test_borrar_cuenta_limpia_minio PASSED
+============================= 22 passed in 8.15s ==============================

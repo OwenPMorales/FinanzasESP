@@ -1,0 +1,17 @@
+# --- API ---
+fastapi[standard]>=0.115,<1
+sqlmodel>=0.0.22,<1
+pydantic-settings>=2.6,<3
+email-validator>=2.2,<3
+python-multipart>=0.0.18,<1
+
+# --- Base de datos ---
+psycopg[binary]>=3.2,<4
+alembic>=1.14,<2
+
+# --- Seguridad: hasheo (Argon2id) y tokens (JWT) ---
+passlib[argon2]>=1.7.4,<2
+python-jose[cryptography]>=3.3,<4
+
+# --- Almacenamiento de objetos ---
+minio>=7.2,<8

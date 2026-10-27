@@ -1,0 +1,27 @@
+[01] GET /health                                          -> HTTP 200 {'status': 'healthy', 'database': 'ok', 'storage': 'ok'}
+[02] Registro (Argon2id)                                  -> HTTP 201 id=497a4660-1a2f-442f-8097-eae5e06d23fd
+[03] Registro con contraseña débil (rechazo)              -> HTTP 422 
+[04] Login OAuth2 -> access + refresh                     -> HTTP 200 type=access exp_in=1800s
+[05] Login con contraseña incorrecta                      -> HTTP 401 
+[06] GET /users/me sin token                              -> HTTP 401 
+[07] GET /users/me con Bearer                             -> HTTP 200 username=demo_2b6489
+[08] PUT /users/me/avatar (MinIO)                         -> HTTP 200 has_avatar=True
+[09] URL prefirmada del avatar (descarga directa)         -> HTTP 200 http://localhost:9030/finanzas-esp/users/497a4660-1a2f-442f-8097-eae5e06d23fd/avatar/avatar.jpg
+[10] POST /tickets/ (multipart -> MinIO)                  -> HTTP 201 status=pendiente source=web
+[11] Mismo ticket otra vez (SHA-256 duplicado)            -> HTTP 409 
+[12] Archivo falso .jpg (magic bytes)                     -> HTTP 415 
+[13] POST /devices/ (llave del ESP32)                     -> HTTP 201 key=fesp_KXhJjYB...
+[14] POST /auth/device-token                              -> HTTP 200 type=device
+[15] ESP32: POST /tickets/base64                          -> HTTP 201 source=esp32
+[16] ESP32 intenta borrar la cuenta (prohibido)           -> HTTP 403 
+[17] GET /tickets/                                        -> HTTP 200 X-Total-Count=2
+[18] GET /tickets/{id} (URL prefirmada)                   -> HTTP 200 items=[]
+[19] GET /tickets/{id}/image (stream)                     -> HTTP 200 29496 bytes
+[20] POST /auth/refresh (rotación)                        -> HTTP 200 
+[21] Reusar refresh viejo (detección de robo)             -> HTTP 401 
+[22] Refresh nuevo tras la alarma (revocado)              -> HTTP 401 
+
+Objetos en MinIO del usuario (3):
+    users/497a4660-1a2f-442f-8097-eae5e06d23fd/avatar/avatar.jpg
+    users/497a4660-1a2f-442f-8097-eae5e06d23fd/tickets/2026/10/745d7965-8460-49ab-8ffc-a03b6880cab1.jpg
+    users/497a4660-1a2f-442f-8097-eae5e06d23fd/tickets/2026/10/a1ab5bdf-51af-43fa-8c40-69227672a216.jpg
