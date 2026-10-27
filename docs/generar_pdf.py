@@ -626,7 +626,7 @@ _DUMMY_HASH = pwd_context.hash("usuario-inexistente")   # contra timing attacks'
 git checkout -b v01
 git add .
 git commit -m "v01: modelo User, hasheo Argon2id, tokens JWT y MinIO"
-git remote add origin https://github.com/<usuario>/FinanzasESP.git
+git remote add origin https://github.com/OwenPMorales/FinanzasESP.git
 git push -u origin v01'''),
         P("Quedan fuera del repositorio (.gitignore): <font face='Consolas'>.venv/</font>, <font face='Consolas'>.env</font>, "
           "<font face='Consolas'>minio_data/</font>, bases SQLite y cachés de Python."),
