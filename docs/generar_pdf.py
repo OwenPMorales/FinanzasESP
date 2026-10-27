@@ -2,6 +2,7 @@
 Genera docs/Entregable_v01_FinanzasESP.pdf (introducción, desarrollo y conclusión).
 
 Uso:  python docs/generar_pdf.py
+La versión Word se genera con docs/generar_docx.py a partir del mismo contenido.
 """
 from datetime import date
 from pathlib import Path
@@ -226,7 +227,8 @@ def on_page(canvas, doc):
     canvas.restoreState()
 
 
-def build():
+def build_story() -> list:
+    """Contenido del entregable como flowables de reportlab (lo reutiliza generar_docx.py)."""
     story = []
     W = letter[0] - 4 * cm
 
@@ -602,7 +604,7 @@ _DUMMY_HASH = pwd_context.hash("usuario-inexistente")   # contra timing attacks'
         P("2.10 Entorno, pruebas y evidencias", "h2"),
         P("El proyecto usa un <b>entorno virtual</b> (<font face='Consolas'>.venv</font>) con dependencias fijadas por "
           "rango en <font face='Consolas'>requirements.txt</font> (y <font face='Consolas'>requirements-dev.txt</font> para "
-          "pruebas y este PDF). Los secretos viven en <font face='Consolas'>.env</font>, excluido de git; el repositorio "
+          "pruebas y para generar este documento). Los secretos viven en <font face='Consolas'>.env</font>, excluido de git; el repositorio "
           "incluye <font face='Consolas'>.env.example</font>. El script <font face='Consolas'>iniciar.ps1</font> crea el "
           "venv, el .env con una SECRET_KEY nueva, levanta Docker, aplica migraciones y arranca uvicorn con "
           "<font face='Consolas'>--host 0.0.0.0</font> para que el ESP32 alcance el servidor."),
@@ -660,7 +662,11 @@ git push -u origin v01'''),
             "Google. <i>Gemini API — Image understanding and structured output</i>. ai.google.dev",
         ]),
     ]
+    return story
 
+
+def build():
+    story = build_story()
     doc = SimpleDocTemplate(
         str(OUT), pagesize=letter,
         leftMargin=2 * cm, rightMargin=2 * cm, topMargin=2 * cm, bottomMargin=2.2 * cm,

@@ -1,3 +1,7 @@
 -r requirements.txt
 pytest>=8,<9
+
+# Documentación: PDF y DOCX del entregable (docs/generar_pdf.py, docs/generar_docx.py)
 reportlab>=4,<5
+python-docx>=1.1,<2
+pypdfium2>=4,<6

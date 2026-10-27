@@ -7,7 +7,8 @@ tus gastos.
 
 > **Rama `v01` — Primer entregable:** modelo User · Hasheo · Token · MinIO.
 > El documento completo (introducción, desarrollo y conclusión) está en
-> [docs/Entregable_v01_FinanzasESP.pdf](docs/Entregable_v01_FinanzasESP.pdf).
+> [docs/Entregable_v01_FinanzasESP.pdf](docs/Entregable_v01_FinanzasESP.pdf)
+> (también en Word: [docs/Entregable_v01_FinanzasESP.docx](docs/Entregable_v01_FinanzasESP.docx)).
 
 ## Arquitectura
 
